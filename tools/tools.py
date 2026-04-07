@@ -118,7 +118,7 @@ FLIGHTS_DB: dict[tuple[str, str], list[dict]] = {
     ],
 }
 
-HOTELS_DB = {
+HOTELS_DB: dict[str, list[dict]] = {
     "Đà Nẵng": [
         {
             "name": "Mường Thanh Luxury",
