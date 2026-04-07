@@ -5,3 +5,7 @@
 - Agent in `agent.py`
 - Test cases in `tests/test.json`
 - Test output for tests 1-5 in `logs/test_logs.txt`
+
+### Instructions
+- Set `OPENAI_API_KEY` in a new `.env` file before running agent.
+- Run agent using `python3 agent.py`
