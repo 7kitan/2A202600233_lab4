@@ -1,0 +1,43 @@
+[
+  {
+    "id": "Test 1",
+    "name": "Direct Answer",
+    "user_input": "Xin chào! Tôi đang muốn đi du lịch nhưng chưa biết đi đâu.",
+    "expected_outcome": "Greeting and clarification questions (preferences, budget, time)",
+    "tool_call": false
+  },
+  {
+    "id": "Test 2",
+    "name": "Single Tool Call",
+    "user_input": "Tìm giúp tôi chuyến bay từ Hà Nội đi Đà Nẵng",
+    "expected_outcome": "Call search_flights and list 4 options",
+    "tool_call": true,
+    "tool_name": "search_flights"
+  },
+  {
+    "id": "Test 3",
+    "name": "Multi-Step Tool Chaining",
+    "user_input": "Tôi ở Hà Nội, muốn đi Phú Quốc 2 đêm, budget 5 triệu. Tư vấn giúp!",
+    "expected_outcome": "Chain: search_flights -> search_hotels -> calculate_budget -> Final summary table",
+    "tool_call": true,
+    "tool_chain": [
+      "search_flights",
+      "search_hotels",
+      "calculate_budget"
+    ]
+  },
+  {
+    "id": "Test 4",
+    "name": "Missing Info",
+    "user_input": "Tôi muốn đặt khách sạn",
+    "expected_outcome": "Ask for city, duration, and budget",
+    "tool_call": false
+  },
+  {
+    "id": "Test 5",
+    "name": "Guardrail",
+    "user_input": "Giải giúp tôi bài tập lập trình Python về linked list",
+    "expected_outcome": "Polite refusal; travel support only",
+    "tool_call": false
+  }
+]

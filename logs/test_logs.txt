@@ -1,0 +1,50 @@
+--- Test Test 1: Direct Answer ---
+Input: Xin chào! Tôi đang muốn đi du lịch nhưng chưa biết đi đâu.
+Expected Goal: Greeting and clarification questions (preferences, budget, time)
+Actual Tools Called: []
+Final Content: Xin chào! Thật tuyệt khi bạn có ý định đi du lịch! Bạn có thể cho mình biết một số điểm đến mà bạn đang hứng thú hoặc muốn khám phá không? Hoặc nếu bạn cần gợi ý, mình có thể đề xuất một số địa điểm nổi tiếng ở Việt Nam như Đà Nẵng, Phú Quốc, hay Hồ Chí Minh. Bên cạnh đó, nếu bạn có ngân sách cụ thể...
+Status: PASS
+------------------------------
+--- Test Test 2: Single Tool Call ---
+Input: Tìm giúp tôi chuyến bay từ Hà Nội đi Đà Nẵng
+Expected Goal: Call search_flights and list 4 options
+Actual Tools Called: ['search_flights']
+Final Content: Dưới đây là các chuyến bay từ Hà Nội đi Đà Nẵng mà tôi tìm thấy:
+
+1. **Vietnam Airlines (economy)**: 06:00 -> 07:20 | Giá: 1.450.000đ
+2. **Vietnam Airlines (business)**: 14:00 -> 15:20 | Giá: 2.800.000đ
+3. **VietJet Air (economy)**: 08:30 -> 09:50 | Giá: 890.000đ
+4. **Bamboo Airways (economy)**: 11:...
+Status: PASS
+------------------------------
+--- Test Test 3: Multi-Step Tool Chaining ---
+Input: Tôi ở Hà Nội, muốn đi Phú Quốc 2 đêm, budget 5 triệu. Tư vấn giúp!
+Expected Goal: Chain: search_flights -> search_hotels -> calculate_budget -> Final summary table
+Actual Tools Called: ['search_flights', 'search_hotels', 'calculate_budget']
+Final Content: Dưới đây là những lựa chọn cho chuyến đi của bạn từ Hà Nội đến Phú Quốc:
+
+### Chuyến bay:
+- **VietJet Air (economy)**: 10:00 -> 12:15 | **Giá**: 1.350.000đ
+
+### Khách sạn:
+- **Lahana Resort (3 sao)**: 800.000đ / đêm
+- **Tổng chi phí cho 2 đêm**: 1.600.000đ
+
+### Chi tiết ngân sách:
+- **Vé máy bay**: ...
+Status: PASS
+------------------------------
+--- Test Test 4: Missing Info ---
+Input: Tôi muốn đặt khách sạn
+Expected Goal: Ask for city, duration, and budget
+Actual Tools Called: []
+Final Content: Chắc chắn rồi! Bạn có thể cho tôi biết bạn định đi đâu và ngân sách cho mỗi đêm là bao nhiêu không?...
+Status: PASS
+------------------------------
+--- Test Test 5: Guardrail ---
+Input: Giải giúp tôi bài tập lập trình Python về linked list
+Expected Goal: Polite refusal; travel support only
+Actual Tools Called: []
+Final Content: Xin lỗi, nhưng mình không thể giúp bạn với bài tập lập trình. Tuy nhiên, nếu bạn đang lên kế hoạch cho một chuyến đi nào đó hoặc cần tư vấn về du lịch bình thường, hãy cho mình biết! Mình rất sẵn lòng hỗ trợ bạn....
+Status: PASS
+------------------------------

@@ -1,0 +1,37 @@
+Test 1: Direct Answer (No Tool)
+
+    User: "Xin chào! Tôi đang muốn đi du lịch nhưng chưa biết đi đâu."
+    Expectation: Agent greets the user and asks follow-up questions regarding interests, budget, and timing.
+    Constraint: Do not call any tools.
+
+Test 2: Single Tool Call
+
+    User: "Tìm giúp tôi chuyến bay từ Hà Nội đi Đà Nẵng"
+    Expectation: Call search_flights("Hà Nội", "Đà Nẵng") and list 4 available flights.
+
+Test 3: Multi-Step Tool Chaining
+
+    User: "Tôi ở Hà Nội, muốn đi Phú Quốc 2 đêm, budget 5 triệu. Tư vấn giúp!"
+    Expectation: Agent must execute the following sequence:
+
+        search_flights("Hà Nội", "Phú Quốc")  →→ Find the cheapest ticket (e.g., 1,100,000đ).
+
+        search_hotels("Phú Quốc", max_price) →→ Suggest hotels within the remaining budget.
+
+        calculate_budget(5000000, flights, hotels) →→ Calculate the remaining balance.
+
+        Final Output: A comprehensive suggestion including a detailed cost table.
+
+Test 4: Missing Info / Clarification
+
+    User: "Tôi muốn đặt khách sạn"
+
+    Expectation: Agent asks for missing details: City, number of nights, and budget.
+
+    Constraint: Do not call any tools yet.
+
+Test 5: Guardrail / Refusal
+
+    User: "Giải giúp tôi bài tập lập trình Python về linked list"
+
+    Expectation: Politely refuse the request and explain that the agent only provides travel assistance.
